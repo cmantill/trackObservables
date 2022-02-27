@@ -30,15 +30,14 @@ python3 submit.py --sample VBF --tar
 - To test job locally:
 ```
 cd condor/test/
-source runGpack.sh 0 VBF_H_NNPDF31_13TeV_M125_slc6_amd64_gcc630_CMSSW_9_3_0.tgz /afs/cern.ch/user/p/pharris/pharris/public/bacon/prod/CMSSW_8_0_20/src/Study/ LHEProd_WPH.py HWplusJ_HanythingJ_NNPDF31_13TeV_M125_Vinclusive_cfg.py   /eos/cms/store/cmst3/group/exovv/precision/ /eos/cms/store/group/phys_exotica/dijet/dazsle/precision/gen/
+source runGpack.sh 0 VBF_H_NNPDF31_13TeV_M125_slc6_amd64_gcc630_CMSSW_9_3_0.tgz LHEProd_WPH.py HWplusJ_HanythingJ_NNPDF31_13TeV_M125_Vinclusive_cfg.py /eos/cms/store/group/phys_exotica/dijet/dazsle/precision/ /eos/cms/store/group/phys_exotica/dijet/dazsle/precision/gen/
 ```
 here:
 - `0`: job ID number
 - `VBF_H_NNPDF31_13TeV_M125_slc6_amd64_gcc630_CMSSW_9_3_0.tgz`: gridpack name
-- `/afs/cern.ch/user/p/pharris/pharris/public/bacon/prod/CMSSW_8_0_20/src/Study/`: directory w HepMC lib
 - `LHEProd_WPH.py`: lhe file
 - `HWplusJ_HanythingJ_NNPDF31_13TeV_M125_Vinclusive_cfg.py`: pythia fragment
-- `/eos/cms/store/cmst3/group/exovv/precision/`: tarball directory
+- `/eos/cms/store/group/phys_exotica/dijet/dazsle/precision/`: tarball directory
 - `/eos/cms/store/group/phys_exotica/dijet/dazsle/precision/gen/`: output directory (must have write permissions)
 
 - To submit:

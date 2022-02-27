@@ -2,11 +2,10 @@
 
 id=$1
 gpack=$2
-dir=$3
-lhe=$4
-had=$5
-gdir=$6
-odir=$7
+lhe=$3
+had=$4
+gdir=$5
+odir=$6
 
 workdir=$PWD
 

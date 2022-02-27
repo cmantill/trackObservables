@@ -8,116 +8,98 @@ gpack_dict = {
         "VBF_H_NNPDF31_13TeV_M125_slc6_amd64_gcc630_CMSSW_9_3_0.tgz",
         "LHEProd_WPH.py", 
         "HWplusJ_HanythingJ_NNPDF31_13TeV_M125_Vinclusive_cfg.py",
-        "/eos/cms/store/cmst3/group/exovv/precision/",
     ],
     "ttH": [
         "ttH_inclusive_hdamp_NNPDF31_13TeV_M125.tgz",
         "LHEProd_ttH.py",
         "ttH_inclusive_hdamp_NNPDF31_13TeV_M125_cfg.py",
-        "/eos/cms/store/cmst3/group/exovv/precision/",
     ],
     "HZ": [
         "HZJ_HanythingJ_NNPDF31_13TeV_M125.tgz",
         "LHEProd_WPH.py",
         "HWplusJ_HanythingJ_NNPDF31_13TeV_M125_Vinclusive_cfg.py",
-        "/eos/cms/store/cmst3/group/exovv/precision/",
     ],
     "HWm": [
         "HWJ_slc6_amd64_gcc630_CMSSW_9_3_0_HWminusJ_HanythingJ_NNPDF31_13TeV_M125_Vinclusive.tgz",
         "LHEProd_WPH.py",
         "HWplusJ_HanythingJ_NNPDF31_13TeV_M125_Vinclusive_cfg.py",
-        "/eos/cms/store/cmst3/group/exovv/precision/",
     ],
     "HWp": [
         "HWJ_slc6_amd64_gcc630_CMSSW_9_3_0_HWplusJ_HanythingJ_NNPDF31_13TeV_M125_Vinclusive.tgz",
         "LHEProd_WPH.py",
         "HWplusJ_HanythingJ_NNPDF31_13TeV_M125_Vinclusive_cfg.py",
-        "/eos/cms/store/cmst3/group/exovv/precision/",
     ],
     "TT": [
         "TT_hdamp_NNPDF31_NNLO_had.tgz",
         "LHEProd_pow.py",
         "Hadronizer_TuneCUETP8M1_13TeV_powheg2.py",
-        "/eos/cms/store/group/phys_exotica/dijet/dazsle/precision/", 
     ],
     "WLNu": [
         "wellnu012j_wpt-600toinf_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
         "LHEProd_WJets.py",
         "Hadronizer_TuneCUETP8M1_13TeV_aMCatNLO_FXFX_5f_max2j_LHE_pythia8_cff.py",
-        "/eos/cms/store/group/phys_exotica/dijet/dazsle/precision/",
     ],
     "DYLL-250To400": [
         "DYJetsToLL_012j_Zpt-250To400_5f_NLO_FXFX_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
         "LHEProd_WJets.py",
         "Hadronizer_TuneCUETP8M1_13TeV_aMCatNLO_FXFX_5f_max2j_LHE_pythia8_cff.py",
-        "/eos/cms/store/group/phys_exotica/dijet/dazsle/precision/",
     ],
     "DYLL-400To650": [
         "DYJetsToLL_012j_Zpt-400To650_5f_NLO_FXFX_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
         "LHEProd_WJets.py",
         "Hadronizer_TuneCUETP8M1_13TeV_aMCatNLO_FXFX_5f_max2j_LHE_pythia8_cff.py",
-        "/eos/cms/store/group/phys_exotica/dijet/dazsle/precision/",
     ],
     "DYLL-650ToInf": [
         "DYJetsToLL_012j_Zpt-650Toinf_5f_NLO_FXFX_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
         "LHEProd_WJets.py",
         "Hadronizer_TuneCUETP8M1_13TeV_aMCatNLO_FXFX_5f_max2j_LHE_pythia8_cff.py",
-        "/eos/cms/store/group/phys_exotica/dijet/dazsle/precision/",
     ],
     "ggH": [
         "gg_H_quark-mass-effects_NNPDF30_13TeV_M125_tarball.tar.gz",
         "LHEProd_pow.py",
         "Hadronizer_TuneCUETP8M1_13TeV_powheg.py",
-        "/eos/cms/store/group/phys_exotica/dijet/dazsle/precision/", # still need to create this tarball 
     ],
     "QCD-2000ToInf": [
         "QCD_HT2000toInf_tarball.tar.xz",
         "LHEProdQCD.py",
         "Hadronizer_TuneCUETP8M1_13TeV_MLM_4f_max4j_LHE_pythia8_cff.py",
-        "/eos/cms/store/group/phys_exotica/dijet/dazsle/precision/", # still need to create this tarball
     ],
     "QCD-1500To2000": [
         "QCD_HT1500to2000_tarball.tar.xz",
         "LHEProdQCD.py",
         "Hadronizer_TuneCUETP8M1_13TeV_MLM_4f_max4j_LHE_pythia8_cff.py",
-        "/eos/cms/store/group/phys_exotica/dijet/dazsle/precision/", # still need to create this tarball
     ],
     "QCD-1000To1500": [
         "QCD_HT1000to1500_tarball.tar.xz",
         "LHEProdQCD.py",
         "Hadronizer_TuneCUETP8M1_13TeV_MLM_4f_max4j_LHE_pythia8_cff.py",
-        "/eos/cms/store/group/phys_exotica/dijet/dazsle/precision/", # still need to create this tarball  
     ],
     "QCD-700To1000": [
         "QCD_HT700to1000_tarball.tar.xz",
         "LHEProdQCD.py",
         "Hadronizer_TuneCUETP8M1_13TeV_MLM_4f_max4j_LHE_pythia8_cff.py",
-        "/eos/cms/store/group/phys_exotica/dijet/dazsle/precision/", # still need to create this tarball  
     ],
     "QCD-500To700": [
         "QCD_HT500to700_tarball.tar.xz",
         "LHEProdQCD.py",
         "Hadronizer_TuneCUETP8M1_13TeV_MLM_4f_max4j_LHE_pythia8_cff.py",
-        "/eos/cms/store/group/phys_exotica/dijet/dazsle/precision/", # still need to create this tarball  
     ],
     "QCD-300To500": [
         "QCD_HT500to700_tarball.tar.xz",
         "LHEProdQCD.py",
         "Hadronizer_TuneCUETP8M1_13TeV_MLM_4f_max4j_LHE_pythia8_cff.py",
-        "/eos/cms/store/group/phys_exotica/dijet/dazsle/precision/", # still need to create this tarball  
     ],
 
 
 }
 phil_dir = "/afs/cern.ch/user/p/pharris/pharris/public/bacon/prod/CMSSW_8_0_20/src/Study/trackObservables/processing/"
 ana_dir = "/afs/cern.ch/user/c/cmantill/work/public/train/CMSSW_8_0_20/src/trackObservables/processing/"
-hepmc_dir = "/afs/cern.ch/user/p/pharris/pharris/public/bacon/prod/CMSSW_8_0_20/src/Study/"
-
+tar_dir = "/eos/cms/store/group/phys_exotica/dijet/dazsle/precision/"
 
 def main(args):
     sample = args.sample
     tag = args.tag
-    gpack,lhe,had,tar_dir = gpack_dict[sample]
+    gpack,lhe,had = gpack_dict[sample]
 
     if args.tar:
         cmd_tar = f"./create_tar.sh {gpack} {ana_dir} {phil_dir} {lhe} {had}"
@@ -131,9 +113,9 @@ def main(args):
     condor_templ_file = open("submit_templ.jdl")
     condor_file = open(localcondor, "w")
     
-    # args: gpack hepmc_dir lhe had tar_dir out_dir
+    # args: gpack lhe had tar_dir out_dir
     out_dir = args.outdir
-    args_line = f"{gpack} {hepmc_dir} {lhe} {had} {tar_dir} {out_dir}"
+    args_line = f"{gpack} {lhe} {had} {tar_dir} {out_dir}"
     for line in condor_templ_file:
         line = line.replace("EXECUTABLE", localexecutable)
         line = line.replace("ARGS", args_line)
@@ -154,7 +136,7 @@ if __name__ == "__main__":
     parser.add_argument("--tar",       dest='tar',       action='store_true',           help="create tar")
     parser.add_argument("--submit",    dest='submit',    action='store_true',           help="submit jobs when created")
     parser.add_argument("--outdir",    dest="outdir",    default="/eos/cms/store/group/phys_exotica/dijet/dazsle/precision/gen/", help="output directory", type=str)
-    parser.add_argument("--njobs",     dest='njobs',     default=1,                     help="num of jobs", type=int) # default of events per job is 10000 - see runGpack
+    parser.add_argument("--njobs","-n",dest='njobs',     default=1,                     help="num of jobs", type=int) # default of events per job is 10000 - see runGpack
     args = parser.parse_args()
 
     main(args)
