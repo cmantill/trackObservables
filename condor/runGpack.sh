@@ -39,7 +39,7 @@ cmsRun LHEOut.py
 mv GenEvent_ASCII.dat test.dat
 
 cd $workdir
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$dir/HepMC/build/install/lib/
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$workdir/HepMC/build/install/lib/
 ./anaSubstructure test.dat $PWD 0 1000000 0
 
 mkdir -p ${odir}/${gpack}/ntuplermethid/

@@ -22,6 +22,7 @@ cd CMSSW_9_3_0/src/
 eval `scramv1 runtime -sh`
 cd $workdir
 echo $PWD
+#./runcmsgrid.sh 10000 $RANDOM 1
 ./runcmsgrid.sh 1 $RANDOM 1
 
 export SCRAM_ARCH=slc7_amd64_gcc530
@@ -38,7 +39,7 @@ cmsRun LHEOut.py
 mv GenEvent_ASCII.dat test.dat
 
 cd $workdir
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$dir/HepMC/build/install/lib/
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$workdir/HepMC/build/install/lib/
 ./anaSubstructure test.dat $PWD 0 1000000 0
 
 mkdir -p ${odir}/${gpack}/ntuplermethid/

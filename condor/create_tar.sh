@@ -19,7 +19,10 @@ cp $dir/config/LHEOut.py  .
 cp $dir/config/$had .
 cp -r $dir/IOMC .
 cp ${anadir}/anaSubstructure .
-cd ..
+cp -r /afs/cern.ch/user/p/pharris/pharris/public/bacon/prod/CMSSW_8_0_20/src/Study/HepMC/ .
+cd HepMC/build/
+make
+cd /tmp/${USER}/
 tar czvf Submit${gpack}.tgz  tmpSubmit
 # use this if needed
 cp  Submit${gpack}.tgz /eos/cms/store/group/phys_exotica/dijet/dazsle/precision/

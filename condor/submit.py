@@ -122,7 +122,7 @@ def main(args):
     if args.tar:
         cmd_tar = f"./create_tar.sh {gpack} {ana_dir} {phil_dir} {lhe} {had}"
         os.system(cmd_tar)
-        exit
+        exit(1)
         
     # create job
     os.system(f"mkdir -p {tag}/logs/")
