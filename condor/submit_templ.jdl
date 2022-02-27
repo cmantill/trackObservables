@@ -1,0 +1,10 @@
+executable = EXECUTABLE
+arguments  = $(ClusterId)$(ProcId) ARGS
+output     = DIR/logs/job.out_$(ClusterId)-$(ProcId)
+error      = DIR/logs/job.err_$(ClusterId)-$(ProcId)
+log        = DIR/logs/job.log_$(ClusterId)-$(ProcId)
+transfer_output_files   = ""
+
++JobFlavour = "nextweek"
+
+queue NJOBS
