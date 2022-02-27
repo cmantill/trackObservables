@@ -21,8 +21,8 @@ cd CMSSW_9_3_0/src/
 eval `scramv1 runtime -sh`
 cd $workdir
 echo $PWD
-#./runcmsgrid.sh 10000 $RANDOM 1
-./runcmsgrid.sh 1 $RANDOM 1
+./runcmsgrid.sh 10000 $RANDOM 1
+#./runcmsgrid.sh 1 $RANDOM 1
 
 export SCRAM_ARCH=slc7_amd64_gcc530
 scramv1 project CMSSW CMSSW_8_0_20
