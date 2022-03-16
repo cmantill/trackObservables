@@ -105,6 +105,8 @@ int evtCtr;
 float RPARAM;
 
 int njets;
+int njetsAK4;
+int nbjetsAK4;
 std::vector<int> j_nbHadrons;
 std::vector<int> j_ncHadrons;
 std::vector<float> j_ptfrac;
@@ -194,12 +196,35 @@ std::vector<float> h_y;
 std::vector<float> h_phi;
 std::vector<float> h_m;
 
+std::vector<float> mjj;
+std::vector<float> jdeta;
+std::vector<float> jdphi;
+
+std::vector<float> j4_pt1;
+std::vector<float> j4_eta1;
+std::vector<float> j4_phi1;
+std::vector<float> j4_m1;
+std::vector<float> j4_btag1;
+
+std::vector<float> j4_pt2;
+std::vector<float> j4_eta2;
+std::vector<float> j4_phi2;
+std::vector<float> j4_m2;
+std::vector<float> j4_btag2;
+
+std::vector<float> j4_pt3;
+std::vector<float> j4_eta3;
+std::vector<float> j4_phi3;
+std::vector<float> j4_m3;
+std::vector<float> j4_btag3;
+
 std::vector<float> met_pt;
 std::vector<float> met_eta;
 std::vector<float> met_phi;
 std::vector<float> met_m;
 std::vector<float> metsmear_pt;
 std::vector<float> metsmear_phi;
+
 
 std::vector<float> l_pt1;
 std::vector<float> l_pt2;
@@ -252,6 +277,7 @@ void analyzeEvent(std::vector < fastjet::PseudoJet > particles, TTree* t_tracks,
 void declareBranches(TTree* t);
 void clearVectors();
 void PushBackJetInformation(fastjet::PseudoJet jet, int particleContentFlag, std::vector < fastjet::PseudoJet > HFparticles);
+void PushBackJetInformationAK4(std::vector<fastjet::PseudoJet> jet, PseudoJet fatjet, int particleContentFlag, std::vector < fastjet::PseudoJet > HFparticles);
 void findDaughts( HepMC::GenParticle *iBase, std::vector<int> &iPdgId,int iDepth) { 
   if(iDepth > 1) return;
   //if(fabs(iBase->pdg_id()) < 6) return 0;
@@ -561,7 +587,6 @@ int main (int argc, char **argv) {
 	}
     }
     
-    std::cout << "finish loop" << std::endl;
     
     f->cd();
     //t_tracks->Write();
@@ -585,15 +610,16 @@ void analyzeEvent(std::vector < fastjet::PseudoJet > particles, TTree* t_tracks,
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++
     // FILL IN THE TREE
     njets = out_jets.size();
-    // std::cout << "Number of jets in the event = " << njets << std::endl;
+    //std::cout << "Number of jets in the event = " << njets << std::endl;
 
     // All Particles Looop
     for (unsigned int i = 0; i < out_jets.size(); i++){
         PushBackJetInformation(out_jets[i],0,HFparticles);
     }
+    /*
     t_allpar->Fill();
     clearVectors();
-    /*
+
     for (unsigned int i = 0; i < out_jets.size(); i++){
         PushBackJetInformation(out_jets[i],1,HFparticles);
     }
@@ -609,19 +635,35 @@ void analyzeEvent(std::vector < fastjet::PseudoJet > particles, TTree* t_tracks,
     clearVectors();
     */
     // std::cout << "tracks+photons" << std::endl;
+    
+    fastjet::JetDefinition   jetDefSmall(fastjet::antikt_algorithm, 0.4);    
+    fastjet::GhostedAreaSpec fjActiveAreaSmall(ghostEtaMax,activeAreaRepeats,ghostArea);
+    fastjet::AreaDefinition  fjAreaDefinitionSmall( fastjet::active_area, fjActiveAreaSmall );
+    fastjet::ClusterSequenceArea* thisClusteringSmall = new fastjet::ClusterSequenceArea(particles, jetDefSmall, fjAreaDefinitionSmall);
+    std::vector<fastjet::PseudoJet> out_jets_Ak4 = sorted_by_pt(thisClusteringSmall->inclusive_jets(30.0));
+    njetsAK4 = out_jets_Ak4.size();
+
+    if(out_jets.size() > 0) PushBackJetInformationAK4(out_jets_Ak4,out_jets[0],0,HFparticles);
+    t_allpar->Fill();
+    clearVectors();
 
     if(out_jets.size()>0) {
        thisClustering->delete_self_when_unused();
     } else delete thisClustering;
+
+    if(out_jets_Ak4.size()>0) {
+       thisClusteringSmall->delete_self_when_unused();
+    } else delete thisClusteringSmall;
     
-    // std::cout << "delete clustering" << std::endl;
+    //std::cout << "delete clustering" << std::endl;
 
 }
 
 // ----------------------------------------------------------------------------------
 void declareBranches( TTree* t ){
-
     t->Branch("njets"            , &njets            );
+    t->Branch("njetsAK4"         , &njetsAK4         );
+    t->Branch("nbjetsAK4"        , &nbjetsAK4        );
     t->Branch("j_ptfrac"         , &j_ptfrac         );
     t->Branch("j_nbHadrons"	 , &j_nbHadrons      );
     t->Branch("j_ncHadrons"      , &j_ncHadrons      );
@@ -714,7 +756,26 @@ void declareBranches( TTree* t ){
     t->Branch("h_decay_id12"            , &h_decay_id12  );
     t->Branch("h_decay_id21"            , &h_decay_id21  );
     t->Branch("h_decay_id22"            , &h_decay_id22  );
- 
+
+    t->Branch("mjj"                     , &mjj  );
+    t->Branch("jdeta"                   , &jdeta);
+    t->Branch("jdphi"                   , &jdphi);
+    t->Branch("j4_pt1"                  , &j4_pt1);
+    t->Branch("j4_eta1"                 , &j4_eta1);
+    t->Branch("j4_phi1"                 , &j4_phi1);
+    t->Branch("j4_m1"                   , &j4_m1);
+    t->Branch("j4_btag1"                , &j4_btag1);
+    t->Branch("j4_pt2"                  , &j4_pt2);
+    t->Branch("j4_eta2"                 , &j4_eta2);
+    t->Branch("j4_phi2"                 , &j4_phi2);
+    t->Branch("j4_m2"                   , &j4_m2);
+    t->Branch("j4_btag2"                , &j4_btag2);
+    t->Branch("j4_pt3"                  , &j4_pt3);
+    t->Branch("j4_eta3"                 , &j4_eta3);
+    t->Branch("j4_phi3"                 , &j4_phi3);
+    t->Branch("j4_m3"                   , &j4_m3);
+    t->Branch("j4_btag3"                , &j4_btag3);
+
     t->Branch("met_pt"             , &met_pt  );
     t->Branch("met_eta"            , &met_eta );
     t->Branch("met_phi"            , &met_phi );
@@ -829,6 +890,28 @@ void clearVectors(){
     h_decay_id12.clear();
     h_decay_id21.clear();
     h_decay_id22.clear();
+
+    mjj.clear();
+    jdeta.clear();
+    jdphi.clear();
+
+    j4_pt1.clear();
+    j4_eta1.clear();
+    j4_phi1.clear();
+    j4_m1.clear();
+    j4_btag1.clear();
+
+    j4_pt2.clear();
+    j4_eta2.clear();
+    j4_phi2.clear();
+    j4_m2.clear();
+    j4_btag2.clear();
+
+    j4_pt3.clear();
+    j4_eta3.clear();
+    j4_phi3.clear();
+    j4_m3.clear();
+    j4_btag3.clear();
 
     met_pt .clear();
     met_eta.clear();
@@ -1171,6 +1254,76 @@ void PushBackJetInformation(fastjet::PseudoJet jet, int particleContentFlag, std
     }
 }
 
+
+// ----------------------------------------------------------------------------------
+void PushBackJetInformationAK4(std::vector<fastjet::PseudoJet> jet, fastjet::PseudoJet fatjet, int particleContentFlag, std::vector < fastjet::PseudoJet > HFparticles){
+    int nbHadrons =0;
+    int ncHadrons=0;
+    int RPARAM04 = 0.4;
+    std::vector<float> btag;
+    std::vector<PseudoJet> cleanedJet;
+    for (unsigned int i = 0; i < jet.size(); i++){
+      if(deltaR(fatjet.eta(),fatjet.phi(),jet[i].eta(),jet[i].phi()) < RPARAM) continue;
+      cleanedJet.push_back(jet[i]);
+      btag.push_back(0);
+      for (unsigned int j = 0; j < HFparticles.size(); j++){
+	if(deltaR(HFparticles[j].eta(),HFparticles[j].phi(),jet[i].eta(),jet[i].phi())<(RPARAM04-0.1*RPARAM04)){
+	  if(abs(HFparticles[j].user_index())/100==4 || (abs(HFparticles[j].user_index())-10000)/100==4 || (abs(HFparticles[j].user_index())-20000)/100==4) ncHadrons++;
+	  else if (abs(HFparticles[j].user_index())/100==5 || (abs(HFparticles[j].user_index())-10000)/100==5 || (abs(HFparticles[j].user_index())-20000)/100==5 || abs(HFparticles[j].user_index())/1000==5) {nbHadrons++; btag[i] += HFparticles[j].pt();}
+	  //		else std::cout<< HFparticles[j].user_index()<<std::endl;
+	}	
+      }
+    }
+
+    //j_nbHadrons.push_back(nbHadrons);
+    // j_ncHadrons.push_back(ncHadrons);
+    nbjetsAK4 = nbHadrons;
+
+    float lJdeta = 0;
+    float lMjj   = 0; 
+    float lJdphi = 0;
+    for (unsigned int i = 0; i < cleanedJet.size(); i++){
+      for (unsigned int j = i+1; j < cleanedJet.size(); j++){
+	float pDEta = fabs(cleanedJet[i].eta()-cleanedJet[j].eta());
+	if(pDEta > lJdeta) { 
+	  lJdeta = pDEta;
+	  lMjj   = (cleanedJet[i] + cleanedJet[j]).m();
+	  lJdphi = fabs(cleanedJet[i].phi()-cleanedJet[j].phi());
+	  if(lJdphi > 2.*TMath::Pi()-lJdphi) lJdphi = 2.*TMath::Pi()-lJdphi;
+	}
+      }
+    }
+    mjj.push_back(lMjj);
+    jdeta.push_back(lJdeta);
+    jdphi.push_back(lJdphi);
+    
+    //std::cout << "-----> mjj 1 " << std::endl;
+    if(cleanedJet.size() == 0) return;
+    int index = 0;
+    j4_pt1 .push_back(cleanedJet[index].pt());
+    j4_eta1.push_back(cleanedJet[index].eta());
+    j4_phi1.push_back(cleanedJet[index].phi());
+    j4_m1.push_back(cleanedJet[index].m());
+    j4_btag1.push_back(btag[index]/cleanedJet[index].pt());
+    
+    //std::cout << "-----> mjj 2 " << std::endl;
+    if(cleanedJet.size() == 1) return;
+    index = 1;
+    j4_pt2 .push_back(cleanedJet[index].pt());
+    j4_eta2.push_back(cleanedJet[index].eta());
+    j4_phi2.push_back(cleanedJet[index].phi());
+    j4_m2.push_back(cleanedJet[index].m());
+    j4_btag2.push_back(btag[index]/cleanedJet[index].pt());
+    
+    //std::cout << "-----> mjj 3 " << std::endl;
+    if(cleanedJet.size() == 2) return;
+    index = 2;
+    j4_pt3 .push_back(cleanedJet[index].pt());
+    j4_eta3.push_back(cleanedJet[index].eta());
+    j4_phi3.push_back(cleanedJet[index].phi());
+    j4_m3.push_back(cleanedJet[index].m());
+    j4_btag3.push_back(btag[index]/cleanedJet[index].pt());
+}
 // ----------------------------------------------------------------------------------
 void smearJetPt(fastjet::PseudoJet &jet, Double_t shiftChargedScale, Double_t shiftPhotonScale, Double_t shiftHadronScale) {
 

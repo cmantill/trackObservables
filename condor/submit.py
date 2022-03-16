@@ -14,6 +14,11 @@ gpack_dict = {
         "LHEProd_ttH.py",
         "ttH_inclusive_hdamp_NNPDF31_13TeV_M125_cfg.py",
     ],
+    "HZJ": [
+        "HZJ_slc7_amd64_gcc820_CMSSW_11_0_1_ZH.tgz",
+        "LHEProd_WPH.py",
+        "HWplusJ_HanythingJ_NNPDF31_13TeV_M125_Vinclusive_cfg.py",
+    ],
     "HZ": [
         "HZJ_HanythingJ_NNPDF31_13TeV_M125.tgz",
         "LHEProd_WPH.py",
